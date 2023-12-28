@@ -20,7 +20,7 @@
         <li class="nav-item dropdown dropdown-slide">
           <%= link_to 'Menu', "#", class: 'nav-link dropdown-toggle', data: {bs_toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false'}, id: 'header-board-menu' %>
           <div class="dropdown-menu dropdown-menu-end">
-            <%= link_to 'あるある見たい', "#", class: 'dropdown-item' %>
+            <%= link_to 'あるある見たい', boards_path, class: 'dropdown-item' %>
             <%= link_to 'あるある言いたい', "#", class: 'dropdown-item' %>
             <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
           </div>

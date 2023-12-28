@@ -1,0 +1,32 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="board-id-<%= board.id %>">
+    <div class="card">
+      <%= image_tag '70017892-c40bbc00-15c7-11ea-8022-9cb7e5d22aa1', class:'card-img-top', size: '300x200' %>
+      <div class="card-body">
+        <div class="d-flex">
+          <h4 class="card-title">
+            <a href="#">
+              title
+            </a>
+          </h4>
+          <div class="ms-auto">
+            <%= link_to "#", id: "button-edit-3" do %>
+            <i class="bi bi-pencil-fill"></i>
+            <% end %> <%= link_to "#", id: "button-delete-3", method: :delete, data: {confirm: ""} do %>
+            <i class="bi bi-trash-fill"></i>
+            <% end %>
+          </div>
+        </div>
+        <ul class="list-inline">
+          <li class="list-inline-item"></li>
+          <li>
+            <i class="bi bi-calendar"></i><%= l board.created_at, format: :long %>
+          </li>
+        </ul>
+        <p class="card-text">
+          <%= board.body %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
