@@ -1,0 +1,35 @@
+.top-wrapper {
+  background-image: url("RR_top.png");
+  height: calc(100vh - 134px);
+  position: relative;
+  right: 20%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat ;
+
+  .top-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+
+    @media screen and (max-width: 767px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.custom-footer {
+  background-color: #b47a0ddd;
+  /* ここに好みの色を指定 */
+  color: white;
+  /* フッターのテキスト色 */
+}
+
+.form-control::placeholder {
+  opacity: 0.4;
+}
