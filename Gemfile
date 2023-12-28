@@ -69,3 +69,5 @@ end
 gem "bootstrap", "~> 5.3"
 gem "sassc-rails", "~> 2.1"
 gem "mini_racer", "~> 0.8.0"
+
+gem 'sorcery'
