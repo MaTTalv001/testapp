@@ -181,6 +181,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 4)
+    pg (1.5.4)
     popper_js (2.11.8)
     psych (5.1.2)
       stringio
@@ -263,9 +264,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.9-aarch64-linux)
-    sqlite3 (1.6.9-arm64-darwin)
-    sqlite3 (1.6.9-x86_64-linux)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.1.0)
@@ -307,6 +305,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mini_racer (~> 0.8.0)
+  pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
   rails-i18n
@@ -314,7 +313,6 @@ DEPENDENCIES
   selenium-webdriver
   sorcery
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
