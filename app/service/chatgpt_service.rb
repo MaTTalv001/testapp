@@ -15,7 +15,7 @@ class ChatgptService
 
     body = {
       model: "dall-e-3",
-      prompt: "japanese anime, #{prompt}",
+      prompt: "japanese anime,美少女, #{prompt}",
       n: 1,
       size: "1024x1024"
     }
