@@ -1,10 +1,9 @@
 <div class="card mt-3 mx-3 p-0" style="width: 18rem;">
-  
 	<div class="card-img-top">
   <% if board.image_filename.present? %>
     <%= image_tag("/generated_images/#{board.image_filename}", class: 'img-fluid') %>
-    <% end %>
-    <div class="card-img-overlay">
+  <% end %>
+   <div class="card-img-overlay">
       <h6><span class="badge bg-secondary"><%= board.category %></span></h6>
     </div>
   </div>
@@ -21,6 +20,6 @@
     <small class="text-muted">
       <%= board.created_at.strftime("%Y-%m-%d %H:%M") %>
     </small>
-    <%= link_to 'Delete', "#", data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+      <%= render 'crud_menus', board: board if current_user.own?(board) %>
   </div>
 </div>
