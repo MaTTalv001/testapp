@@ -118,6 +118,9 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -214,6 +217,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.8)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
@@ -297,11 +303,13 @@ DEPENDENCIES
   bootstrap (~> 5.3)
   capybara
   debug
+  httparty
   importmap-rails
   jbuilder
   mini_racer (~> 0.8.0)
   puma (>= 5.0)
   rails (~> 7.1.2)
+  rails-i18n
   sassc-rails (~> 2.1)
   selenium-webdriver
   sorcery

@@ -4,7 +4,7 @@
       <h1>RR ユーザー登録</h1>
       <%= form_with model: @user, local: true do |f| %>
       <div class="form-group mt-2">
-        <%= f.label :displayname %>
+        <%= f.label :displayname ,t('activerecord.attributes.user.displayname')%>
         <%= f.text_field :displayname, class:'form-control' , placeholder:"〇〇ちゃんにしてしまい「〇〇ちゃんさん」になりがち" %>
       </div>
       <div class="form-group mt-2">
@@ -27,10 +27,10 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field:password_confirmation, class: 'form-control', placeholder:"何文字目まで打ったか混乱しがち" %>
       </div>
-      <%= f.submit '登録', class: 'btn btn-secondary btn-lg mt-3' %>
+      <%= f.submit , t('helpers.submit.create'), class: 'btn btn-secondary btn-lg mt-3' %>
       <% end %>
       <div class="text-center">
-        <%= link_to 'ログインページへ', '#' %>
+        <%= link_to 'ログインページへ', login_path %>
       </div>
     </div>
   </div>

@@ -71,3 +71,6 @@ gem "sassc-rails", "~> 2.1"
 gem "mini_racer", "~> 0.8.0"
 
 gem 'sorcery'
+gem 'httparty'
+
+gem 'rails-i18n'

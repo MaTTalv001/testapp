@@ -1,0 +1,29 @@
+<% if @board.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@board.errors.count, "error") %> prohibited this board from being saved:</h2>
+    <ul>
+    <% @board.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: board, local: true do |f| %>
+<div class="new_board">
+  <div class="mb-3">
+    <!-- name属性はform_withの自動付与に任せれば明示する必要はない-->
+    <%= f.label :category, t('activerecord.attributes.board.category')%>
+    <%= f.select :category, options_for_select(['','プログラミング', '日常・休日', '仕事', 'アニメ・漫画など','性格・特性']), {}, class: 'form-control' %>
+  </div>
+</div>
+<div class="mb-3">
+  <%= f.label :body, t('activerecord.attributes.board.body') %>
+  
+  <!-- フォームのテキストエリアの入力幅はstyleで指定するのではなく、rows: で設定したほうがよい -->
+  <%= f.text_area :body, class: 'form-control mt-2', rows: 5, placeholder: "誰が・どこで・どんな時に・何を・どうなった・・・できる限りわかりやすく" %>
+</div>
+
+<%= f.submit class: 'btn btn-secondary' %>
+<% end %>
+

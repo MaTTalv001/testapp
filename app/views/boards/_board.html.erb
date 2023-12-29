@@ -1,0 +1,25 @@
+<div class="card mt-3 mx-3 p-0" style="width: 18rem;">
+	<div class="card-img-top">
+  <% if board.image_filename.present? %>
+    <%= image_tag("/generated_images/#{board.image_filename}", class: 'img-fluid') %>
+  <% end %>
+   <div class="card-img-overlay">
+      <h6><span class="badge bg-secondary"><%= board.category %></span></h6>
+    </div>
+  </div>
+	
+	<div class="card-title text-center card-header">
+   <h5><%= board.user.displayname %></h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <%= board.body %>
+    </p>
+  </div>
+  <div class="text-end card-footer">
+    <small class="text-muted">
+      <%= board.created_at.strftime("%Y-%m-%d %H:%M") %>
+    </small>
+      <%= render 'crud_menus', board: board if current_user.own?(board) %>
+  </div>
+</div>

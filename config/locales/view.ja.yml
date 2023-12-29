@@ -1,0 +1,29 @@
+ja:
+  helpers:
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する
+    label:
+      email: メールアドレス
+      password: パスワード
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  header:
+    login: ログイン
+    logout: ログアウト
+    board: 掲示板
+    board_index: 掲示板一覧
+    create_board: 掲示板作成
+    bookmark_index: ブックマーク一覧
+    profile: プロフィール
+  boards:
+    title: あるある投稿

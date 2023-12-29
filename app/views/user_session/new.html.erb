@@ -4,11 +4,11 @@
       <h1>ログイン</h1>
       <%= form_with url: login_path, local: true do |f| %>
         <div class="form-group mt-3">
-          <%= f.label :email %>
+          <%= f.label :email, t('activerecord.attributes.user.email') %>
           <%= f.text_field :email, class: 'form-control' %>
         </div>
         <div class="form-group mt-3">
-          <%= f.label :password %>
+          <%= f.label :password, t('activerecord.attributes.user.password') %>
           <%= f.password_field :password, class: 'form-control' %>
         </div>
         <div class="actions">
@@ -16,8 +16,8 @@
         </div>
       <% end %>
       <div class='text-center mt-3'>
-        <%= link_to '登録ページへ', new_user_path %>
-        <%= link_to 'パスワードをお忘れの方はこちら', '#' %>
+        <%= link_to 'RR 新規ユーザー登録', new_user_path %>
+        <%= link_to 'パスワードの再発行', '#' %>
       </div>
     </div>
   </div>

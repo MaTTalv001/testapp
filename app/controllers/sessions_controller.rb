@@ -6,9 +6,10 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to root_url, notice: 'ログイン成功！'
+      flash[:success] = I18n.t('user.create_success')
+      redirect_to root_url
     else
-      flash.now.alert = 'メールまたはパスワードが間違っています。'
+      flash.now[:danger] = I18n.t('user.create_failure')
       render :new
     end
   end

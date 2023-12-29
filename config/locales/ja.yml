@@ -1,0 +1,12 @@
+ja:
+  message:
+    require_login: "ログインしてください"
+    not_created: "掲示板を作成出来ませんでした"
+    created: "掲示板を作成しました"
+  user_session:
+    login_success: "ログインしました"
+    login_failure: "ログインに失敗しました"
+    logout_success: "ログアウトしました"
+  user:
+    create_success: "ユーザー登録が完了しました"
+    create_failure: "ユーザー登録に失敗しました"

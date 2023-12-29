@@ -1,9 +1,9 @@
 <header>
   <nav class="navbar navbar-expand-lg navigation bg-dark" data-bs-theme="dark">
-    <%= link_to "#", class: 'navbar-brand '  do %>
+    <%= link_to root_path, class: 'navbar-brand '  do %>
     <%= image_tag 'logo.png', width:50 %>
     <%end %>
-    <div class = "navbar-text">R R Revolution</div>
+    <div class = "navbar-text">Reality Reflections</div>
     <button
       class="navbar-toggler"
       data-bs-toggle="collapse"
@@ -18,10 +18,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto main-nav align-items-center">
         <li class="nav-item dropdown dropdown-slide">
-          <%= link_to 'Menu', "#", class: 'nav-link dropdown-toggle', data: {bs_toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false'}, id: 'header-board-menu' %>
+          <%= link_to current_user.displayname, "#", class: 'nav-link dropdown-toggle', data: {bs_toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false'}, id: 'header-board-menu' %>
           <div class="dropdown-menu dropdown-menu-end">
-            <%= link_to 'あるある見たい', "#", class: 'dropdown-item' %>
-            <%= link_to 'あるある言いたい', "#", class: 'dropdown-item' %>
+            <%= link_to 'あるある見たい', boards_path, class: 'dropdown-item' %>
+            <%= link_to 'あるある言いたい', new_board_path, class: 'dropdown-item' %>
             <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
           </div>
         </li>
