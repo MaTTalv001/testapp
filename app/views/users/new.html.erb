@@ -25,9 +25,9 @@
       </div>
       <div class="form-group mt-2">
         <%= f.label :password_confirmation %>
-        <%= f.password_field:password_confirmation, class: 'form-control', placeholder:"何文字目まで打ったか混乱しがち" %>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder:"何文字目まで打ったか混乱しがち" %>
       </div>
-      <%= f.submit , t('helpers.submit.create'), class: 'btn btn-secondary btn-lg mt-3' %>
+      <%= f.submit t('helpers.submit.create'), class: 'btn btn-secondary btn-lg mt-3' %>
       <% end %>
       <div class="text-center">
         <%= link_to 'ログインページへ', login_path %>
