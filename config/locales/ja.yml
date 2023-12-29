@@ -1,4 +1,7 @@
 ja:
+  defaults:
+    message:
+      delete_confirm: "あるあるをないないします？"
   message:
     require_login: "ログインしてください"
     not_created: "掲示板を作成出来ませんでした"
@@ -10,3 +13,7 @@ ja:
   user:
     create_success: "ユーザー登録が完了しました"
     create_failure: "ユーザー登録に失敗しました"
+  board:
+    post_aruaru: "あるあるを投稿しました"
+    delete_aruaru: "あるあるをないないしました"
+    failed_post_aruaru: "あるあるを投稿できませんでした"
