@@ -5,19 +5,7 @@ class ChatgptService
 
   attr_reader :api_url, :options, :model, :message
   # モデルは予め設定しておく
-  def initialize(message, model = 'gpt-3.5-turbo')
-		# 機密ファイルを呼び出している
-    api_key = Rails.application.credentials.chatgpt_api_key
-    @options = {
-      headers: {
-        'Content-Type' => 'application/json',
-        'Authorization' => "Bearer #{api_key}" # ここで 'api_key' を使用
-      }
-    }
-    @api_url = 'https://api.openai.com/v1/chat/completions'
-    @model = model
-    @message = message
-  end
+  
 
   def call
 		# userからのメッセージに対し一つ回答を与える
@@ -31,18 +19,43 @@ class ChatgptService
     response['choices'][0]['message']['content']
   end
 
-  def generate_image_with_dalle2(prompt)
+  class << self
+    def initialize(message, model = 'gpt-3.5-turbo')
+		# 機密ファイルを呼び出している
+    api_key = Rails.application.credentials.chatgpt_api_key
+    @options = {
+      headers: {
+        'Content-Type' => 'application/json',
+        'Authorization' => "Bearer #{api_key}" # ここで 'api_key' を使用
+      }
+    }
+    @api_url = 'https://api.openai.com/v1/chat/completions'
+    @model = model
+    @message = message
+  end
+
+    def call(message, model = 'gpt-3.5-turbo')
+      new(message, model).call
+    end
+
+    def generate_image_with_dalle3(prompt)
+      api_key = Rails.application.credentials.chatgpt_api_key
+      headers = {
+        'Content-Type' => 'application/json',
+        'Authorization' => "Bearer #{api_key}" # ここで 'api_key' を使用
+      }
+
 		# モデルのパラメータを指定する。
     body = {
       model: "dall-e-3",
-      prompt: prompt,
+      prompt: "japanese anime, #{prompt}",
       n: 1,
       size: "1024x1024"
     }
 		# どこにアクセスするか（エンドポイント）の設定。OpenAI社サイトで確認
     response = HTTParty.post("https://api.openai.com/v1/images/generations",
                              body: body.to_json,
-                             headers: options[:headers],
+                             headers: headers,
                              timeout: 100)
     raise response['error']['message'] unless response.code == 200
 
@@ -51,9 +64,9 @@ class ChatgptService
   end
 
   # 画像をダウンロードする関数
-  def self.download_image(prompt)
+  def download_image(prompt)
 		# 上で指定したgenerate_imageにプロンプトを入力して生成画像のURLを得る
-    image_url = generate_image(prompt)
+    image_url = generate_image_with_dalle3(prompt)
     # ファイル名を生成。他の画像と名前が重複しないようにタイムスタンプをファイル名とする（例：「20230101_123456.png」）
     timestamp = Time.now.strftime('%Y%m%d_%H%M%S')
     file_name = "#{timestamp}.png"
@@ -77,9 +90,6 @@ class ChatgptService
     nil
   end
 
-  class << self
-    def call(message, model = 'gpt-3.5-turbo')
-      new(message, model).call
-    end
+
   end
 end

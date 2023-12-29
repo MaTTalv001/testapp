@@ -33,3 +33,10 @@
 .form-control::placeholder {
   opacity: 0.4;
 }
+
+.my-custom-card {
+  margin-right: 0;
+  /* 右のマージンを削除 */
+  padding-right: 0;
+  /* 右のパディングを削除 */
+}

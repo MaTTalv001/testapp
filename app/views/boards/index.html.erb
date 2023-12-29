@@ -2,7 +2,8 @@
     <div class="col-12">
       <div class="row">
         <% if @boards.present? %>
-        <%= render partial: "board", collection: @boards %> <% else %>
+        <%= render partial: "board", collection: @boards %>
+        <% else %>
         <p><%= t('.no_result') %></p>
         <% end %>
       </div>
