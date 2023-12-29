@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
       image_filename = ChatgptService.download_image(prompt)
       @board.image_filename = image_filename if image_filename
     rescue Net::ReadTimeout
-      flash.now['danger'] = I18n.t('defaults.message.not_created', item: Board.model_name.human)
+      flash.now['danger'] = I18n.t('ja.board.failed_post_aruaru', item: Board.model_name.human)
       render :new, status: :unprocessable_entity
     end
     # begin
@@ -31,10 +31,10 @@ class BoardsController < ApplicationController
     # rescue Net::ReadTimeout
     # end
     if @board.save
-      redirect_to boards_path, success: I18n.t('defaults.message.created', item: Board.model_name.human)
+      redirect_to boards_path, success: I18n.t('board.post_aruaru', item: Board.model_name.human)
     else
       Rails.logger.debug(@board.errors.full_messages)
-      flash.now['danger'] = I18n.t('defaults.message.not_created', item: Board.model_name.human)
+      flash.now['danger'] = I18n.t('board.failed_post_aruaru', item: Board.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
@@ -43,7 +43,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy!
-    redirect_to boards_path, success: t('defaults.message.deleted', item: Board.model_name.human)
+    redirect_to boards_path, success: t('board.delete_aruaru', item: Board.model_name.human)
   end
 
   private
