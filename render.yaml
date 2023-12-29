@@ -1,12 +1,12 @@
 databases:
-  - name: testapp_DB
-    databaseName: testapp_DB
+  - name: rrdb
+    databaseName: rrdb
     user: matta
     region: singapore
 
 services:
   - type: web
-    name: testapp_DB
+    name: RR
     env: ruby
     region: singapore
     buildCommand: "./bin/render-build.sh"
