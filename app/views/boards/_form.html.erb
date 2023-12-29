@@ -13,16 +13,17 @@
 <div class="new_board">
   <div class="mb-3">
     <!-- name属性はform_withの自動付与に任せれば明示する必要はない-->
-    <%= f.label :category %>
-    <%= f.select :category, options_for_select(['','プログラミング', '日常・休日', '仕事', 'コミュニケーション']), {}, class: 'form-control' %>
+    <%= f.label :category, t('activerecord.attributes.board.category')%>
+    <%= f.select :category, options_for_select(['','プログラミング', '日常・休日', '仕事', 'アニメ・漫画など','性格・特性']), {}, class: 'form-control' %>
   </div>
 </div>
 <div class="mb-3">
-  <%= f.label :body %>
+  <%= f.label :body, t('activerecord.attributes.board.body') %>
+  
   <!-- フォームのテキストエリアの入力幅はstyleで指定するのではなく、rows: で設定したほうがよい -->
-  <%= f.text_area :body, class: 'form-control', rows: 10 %>
+  <%= f.text_area :body, class: 'form-control mt-2', rows: 5, placeholder: "誰が・どこで・どんな時に・何を・どうなった・・・できる限りわかりやすく" %>
 </div>
 
-<%= f.submit class: 'btn btn-primary' %>
+<%= f.submit class: 'btn btn-secondary' %>
 <% end %>
 
