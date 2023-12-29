@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = I18n.t('user.create_success')
-      redirect_to root_url
+      redirect_to boards_path
     else
       flash.now[:danger] = I18n.t('user.create_failure')
       render :new
