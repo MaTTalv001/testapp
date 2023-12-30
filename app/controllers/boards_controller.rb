@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
   
   def index
     @boards = Board.all.includes(:user).order(created_at: :desc)
+    @board = Board.new
   end
 
   def show
@@ -19,7 +20,7 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     @board.user = current_user
     begin
-      prompt = "#{@board.category}, #{@board.body}"
+      prompt = "purpose：あるある事例を紹介したい, situation：#{@board.category}, detail：#{@board.body}, constraints：without subtitles"
       image_filename = ChatgptService.download_image(prompt)
       @board.image_filename = image_filename if image_filename
     rescue Net::ReadTimeout
