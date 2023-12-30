@@ -2,10 +2,31 @@
     <div class="col-12">
       <div class="row">
         <% if @boards.present? %>
+        <div class="text-end mt-3">
+        <button type="button"  class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#newBoardModal">
+          あるある言う
+        </button>
+        </div >
         <%= render partial: "board", collection: @boards %>
         <% else %>
         <p><%= t('.no_result') %></p>
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- モーダル -->
+<div class="modal fade" id="newBoardModal" tabindex="-1" aria-labelledby="newBoardModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newBoardModalLabel"><%= t('boards.title') %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- ここにフォームを挿入 -->
+        <%= render 'form', { board: @board } %>
       </div>
     </div>
   </div>
