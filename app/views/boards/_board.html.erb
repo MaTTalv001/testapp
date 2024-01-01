@@ -20,6 +20,8 @@
     <small class="text-muted">
       <%= board.created_at.strftime("%Y-%m-%d %H:%M") %>
     </small>
+    <% if logged_in? %>
       <%= render 'crud_menus', board: board if current_user.own?(board) %>
+    <% end %>
   </div>
 </div>
