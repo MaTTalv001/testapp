@@ -21,8 +21,8 @@ class BoardsController < ApplicationController
     @board.user = current_user
     begin
       prompt = "purpose：あるある事例を紹介したい, situation：#{@board.category}, detail：#{@board.body}, constraints：without subtitles"
-      image_filename = ChatgptService.download_image(prompt)
-      @board.image_filename = image_filename if image_filename
+      image_key = ChatgptService.download_image(prompt)
+      @board.image.attach(ActiveStorage::Blob.find_by(key: image_key)) if image_key
     rescue Net::ReadTimeout
       flash.now['danger'] = I18n.t('ja.board.failed_post_aruaru', item: Board.model_name.human)
       render :new, status: :unprocessable_entity
