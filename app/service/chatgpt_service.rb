@@ -27,31 +27,22 @@ class ChatgptService
   end
 
   def self.download_image(prompt)
-    image_url = generate_image_with_dalle3(prompt)
-    timestamp = Time.now.strftime('%Y%m%d_%H%M%S')
-    file_name = "#{timestamp}.png"
+    begin
+      image_url = generate_image_with_dalle3(prompt)
+      file = URI.open(image_url)
+      
+      blob = ActiveStorage::Blob.create_and_upload!(
+        io: file,
+        filename: file.base_uri.to_s.split('/').last,
+        content_type: 'image/png' # 適切なコンテンツタイプを設定
+      )
 
-    if Rails.env.production?
-      file_path = "/var/lib/data/generated_images/#{file_name}" # 本番環境でのURL
-    else
-      file_path = Rails.root.join('public', 'generated_images', file_name) # 開発環境でのローカルパス
+      file.close
+      blob.key
+    rescue StandardError => e
+      Rails.logger.error "Image download failed: #{e.message}"
+      Rails.logger.error e.backtrace.join("\n")
+      nil
     end
-
-    # file_path = Rails.root.join('public', 'generated_images', file_name)
-    # 本番環境と開発環境で分ける
-    # file_path = image_save_path_for(file_name)
-    
-    FileUtils.mkdir_p(File.dirname(file_path))
-    URI.open(image_url) do |image|
-      File.open(file_path, 'wb') do |file|
-        file.write(image.read)
-      end
-    end
-
-    file_name
-  rescue StandardError => e
-    Rails.logger.error "Image download failed: #{e.message}"
-    Rails.logger.error e.backtrace.join("\n")
-    nil
   end
 end
