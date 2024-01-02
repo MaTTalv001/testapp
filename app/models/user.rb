@@ -13,12 +13,12 @@ class User < ApplicationRecord
 
   def own?(object)
     object.user_id == id
+  end
 
   def total_majors_received
     boards.joins(:majors).count
   end
   def total_minors_received
     boards.joins(:minors).count
-  end
   end
 end
