@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   post 'login', to: 'user_session#create'
   delete 'logout', to: 'user_session#destroy'
   get "up" => "rails/health#show", as: :rails_health_check
-  
+  resources :boards do
+    resource :majors, only: [:create, :destroy]
+    resource :minors, only: [:create, :destroy]
+  end
 end

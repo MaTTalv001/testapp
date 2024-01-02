@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :boards, dependent: :destroy
+  has_many :majors
+  has_many :minors
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
@@ -11,5 +13,12 @@ class User < ApplicationRecord
 
   def own?(object)
     object.user_id == id
+
+  def total_majors_received
+    boards.joins(:majors).count
+  end
+  def total_minors_received
+    boards.joins(:minors).count
+  end
   end
 end

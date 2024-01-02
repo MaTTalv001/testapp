@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_31_170203) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_02_043443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,26 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_31_170203) do
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
+  create_table "majors", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_majors_on_board_id"
+    t.index ["user_id", "board_id"], name: "index_majors_on_user_id_and_board_id", unique: true
+    t.index ["user_id"], name: "index_majors_on_user_id"
+  end
+
+  create_table "minors", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_minors_on_board_id"
+    t.index ["user_id", "board_id"], name: "index_minors_on_user_id_and_board_id", unique: true
+    t.index ["user_id"], name: "index_minors_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -66,4 +86,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_31_170203) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boards", "users"
+  add_foreign_key "majors", "boards"
+  add_foreign_key "majors", "users"
+  add_foreign_key "minors", "boards"
+  add_foreign_key "minors", "users"
 end
