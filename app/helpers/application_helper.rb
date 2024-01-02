@@ -14,4 +14,8 @@ module ApplicationHelper
       "/generated_images/#{image_name}" # 開発環境でのローカルパス
     end
   end
+
+  def current_user_board_count
+    current_user.boards.count if current_user
+  end
 end

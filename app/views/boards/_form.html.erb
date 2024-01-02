@@ -3,14 +3,14 @@
   <div class="mb-3">
     <!-- name属性はform_withの自動付与に任せれば明示する必要はない-->
     <%= f.label :category, t('activerecord.attributes.board.category')%>
-    <%= f.select :category, options_for_select(['','プログラミング', '日常・休日', '仕事', 'アニメ・漫画など','性格・特性']), {}, class: 'form-control' %>
+    <%= f.select :category, options_for_select(['','プログラミング', '日常・休日', '仕事', 'アニメ・漫画などの展開','性格・特性']), {}, class: 'form-control' %>
   </div>
 </div>
 <div class="mb-3">
   <%= f.label :body, t('activerecord.attributes.board.body') %>
   
   <!-- フォームのテキストエリアの入力幅はstyleで指定するのではなく、rows: で設定したほうがよい -->
-  <%= f.text_area :body, class: 'form-control mt-2', rows: 5, placeholder: "誰が・どこで・どんな時に・何を・どうなった・・・できる限りわかりやすく" %>
+  <%= f.text_area :body, class: 'form-control mt-2', rows: 5, placeholder: "誰が・どこで・どんな時に・何を・どうなった・・・できる限り具体的に。" %>
 </div>
 <div class="text-end">
 <%= f.submit  t('board.create_button'),class: 'btn btn-secondary' %>
