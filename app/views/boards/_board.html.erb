@@ -34,6 +34,7 @@
     <button type="button" class="btn btn-outline-primary" disabled><%= "#{board.majors_count}めちゃR" %></button>
     <button type="button" class="btn btn-outline-secondary" disabled><%= "#{board.minors_count}シブR" %></button>
   <% end %>
+  <i class="bi bi-question-circle" data-bs-toggle="modal" data-bs-target="#RSample"></i>
   </div>
 
   <div class="text-end card-footer">
@@ -45,4 +46,23 @@
     <% end %>
   </div>
 
+</div>
+
+
+<div class="modal fade" id="RSample" tabindex="-1" aria-labelledby="#RSample" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">RR（あるある）評価</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><button type="button" class="btn btn-primary" disabled>めちゃR</button> : 日常的に遭遇する物量的あるある　ほんとそれな</P>
+      　<p><button type="button" class="btn btn-secondary" disabled>シブR</button> : 頻度は低いが深みのある技巧派あるある　わかるわぁ</P>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Recognise</button>
+      </div>
+    </div>
+  </div>
 </div>
