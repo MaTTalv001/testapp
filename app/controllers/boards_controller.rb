@@ -4,6 +4,9 @@ class BoardsController < ApplicationController
   
   def index
     @boards = Board.all.includes(:user).order(created_at: :desc)
+    @q = Board.ransack(params[:q])
+   #@boards = @q.result.includes(:user).distinct
+    @boards = @q.result
     @board = Board.new
   end
 
