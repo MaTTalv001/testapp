@@ -13,4 +13,4 @@ ja:
         password_confirmation: パスワード確認
       board:
         category: カテゴリー
-        body: あるある内容（140字以内）
+        body: あるあるな内容（140字以内）
