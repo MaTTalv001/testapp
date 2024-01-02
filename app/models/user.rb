@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def total_minors_received
     boards.joins(:minors).count
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["displayname"]
+  end
 end

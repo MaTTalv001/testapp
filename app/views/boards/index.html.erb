@@ -1,20 +1,38 @@
 <div class="row">
     <div class="col-12">
       <div class="row">
+        <%= search_form_for @q do |f| %>
+        <div class="input-group mt-3">
+          <%= f.search_field :user_displayname_cont, class:"form-control m-1", placeholder:"ユーザー"%>
+          <%= f.select :category_cont, ['プログラミング', '日常・休日', '仕事', 'アニメ・漫画などの展開','性格・特性'], { include_blank: 'カテゴリーを選択' }, class: 'form-control m-1' %>
+          <%= f.search_field :body_cont, class:"form-control m-1", placeholder:"あるある本文"%>
+          <%= f.submit "Search" ,class:"btn btn-primary m-1"%>
+        </div>
+        <% end %>
+        <div class="btn-group-sm text-end" role="group" aria-label="Basic example">
+          Sort
+          <%= sort_link(@q, :created_at, "投稿日", {}, { class: "btn btn-primary" }) %>
+          <%= sort_link(@q, :majors_count, "めちゃR数", {}, { class: "btn btn-primary" }) %>
+          <%= sort_link(@q, :minors_count, "シブR数", {}, { class: "btn btn-primary" }) %>
+        </div>
+      </div>
+      <div class="row">
         <% if @boards.present? %>
           <% if logged_in? %>
             <div class="fixed-bottom text-end" style="padding-right: 20px; padding-bottom: 20px;">
             <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#newBoardModal">投稿する</button>
             </div>
           <% else %>
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-primary mt-3" role="alert">
               各機能の利用にはログインが必要です
             </div>
           <%end%>
+    
         <%= render partial: "board", collection: @boards %>
         <% else %>
         <p><%= t('.no_result') %></p>
         <% end %>
+      </div>
       </div>
     </div>
   </div>
