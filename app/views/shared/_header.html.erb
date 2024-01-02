@@ -19,7 +19,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto main-nav align-items-center">
         <% if current_user %>
-        <li class="navbar-text me-auto">あるある投稿数：<%= current_user_board_count %>　　</li>
+        <li class="navbar-text me-auto">あるある投稿数：<%= current_user_board_count %>　</li>
+        <li class="navbar-text me-auto">めちゃR獲得数：<%= current_user.total_majors_received %>　</li>
+        <li class="navbar-text me-auto">シブR獲得数：<%= current_user.total_minors_received %>　</li>
         <% end %>
         <li class="nav-item dropdown dropdown-slide">
           <%= link_to current_user.displayname, "#", class: 'nav-link dropdown-toggle', data: {bs_toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false'}, id: 'header-board-menu' %>

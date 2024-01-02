@@ -16,6 +16,26 @@
       <%= board.body %>
     </p>
   </div>
+  
+  <div class="d-grid gap-2 d-md-block m-3">
+  <% if logged_in? %>
+    <% if board.majors.find_by(user: current_user) %>
+      <%= link_to "#{board.majors_count}めちゃR", board_majors_path(board), data:{turbo_method: :delete} ,class:"btn btn-primary btn-sm"%>
+    <% else %>
+      <%= link_to "#{board.majors_count}めちゃR", board_majors_path(board), data:{turbo_method: :post},class:"btn btn-outline-primary btn-sm" %>
+    <% end %>
+
+    <% if board.minors.find_by(user: current_user) %>
+      <%= link_to "#{board.minors_count}シブR", board_minors_path(board), data:{turbo_method: :delete} ,class:"btn btn-secondary btn-sm"%>
+    <% else %>
+      <%= link_to "#{board.minors_count}シブR", board_minors_path(board), data:{turbo_method: :post},class:"btn btn-outline-secondary btn-sm" %>
+    <% end %>
+  <% else %>
+    <button type="button" class="btn btn-outline-primary" disabled><%= "#{board.majors_count}めちゃR" %></button>
+    <button type="button" class="btn btn-outline-secondary" disabled><%= "#{board.minors_count}シブR" %></button>
+  <% end %>
+  </div>
+
   <div class="text-end card-footer">
     <small class="text-muted">
       <%= board.created_at.strftime("%Y-%m-%d %H:%M") %>
@@ -24,4 +44,5 @@
       <%= render 'crud_menus', board: board if current_user.own?(board) %>
     <% end %>
   </div>
+
 </div>
