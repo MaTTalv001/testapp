@@ -20,15 +20,15 @@
   <div class="d-grid gap-2 d-md-block m-3">
   <% if logged_in? %>
     <% if board.majors.find_by(user: current_user) %>
-      <%= link_to "#{board.majors_count}めちゃR", board_majors_path(board), data:{turbo_method: :delete} ,class:"btn btn-primary btn-sm"%>
+      <%= render 'boards/unmajor', {board: board} %>
     <% else %>
-      <%= link_to "#{board.majors_count}めちゃR", board_majors_path(board), data:{turbo_method: :post},class:"btn btn-outline-primary btn-sm" %>
+      <%= render 'boards/major', {board: board} %>
     <% end %>
 
     <% if board.minors.find_by(user: current_user) %>
-      <%= link_to "#{board.minors_count}シブR", board_minors_path(board), data:{turbo_method: :delete} ,class:"btn btn-secondary btn-sm"%>
+      <%= render 'boards/unminor', {board: board} %>
     <% else %>
-      <%= link_to "#{board.minors_count}シブR", board_minors_path(board), data:{turbo_method: :post},class:"btn btn-outline-secondary btn-sm" %>
+      <%= render 'boards/minor', {board: board} %>
     <% end %>
   <% else %>
     <button type="button" class="btn btn-outline-primary" disabled><%= "#{board.majors_count}めちゃR" %></button>

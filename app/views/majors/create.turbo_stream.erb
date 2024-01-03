@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "major-button-for-board-#{@board.id}" do %>
+  <%= render 'boards/unmajor', board: @board %>
+<% end %>

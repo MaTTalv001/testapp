@@ -1,0 +1,6 @@
+<%= link_to board_minors_path(board), 
+                  data: { turbo_method: :post},
+                  class: "btn btn-outline-secondary btn-sm",
+                  id: "minor-button-for-board-#{board.id}" do %>
+<%= "#{board.minors_count}シブR" %>
+<% end %>
