@@ -6,10 +6,10 @@ class BoardsController < ApplicationController
     # @boards = Board.all.includes(:user).order(created_at: :desc)
     @q = Board.ransack(params[:q])
     if params[:q].blank?
-      @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page])
+      @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
     else
    #@boards = @q.result.includes(:user).distinct
-    @boards = @q.result(distinct: true).page(params[:page])
+    @boards = @q.result(distinct: true).page(params[:page]).per(10)
     end
     @board = Board.new
   end
