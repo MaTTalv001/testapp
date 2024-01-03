@@ -1,7 +1,7 @@
 <div class="card mt-3 mx-3 p-0" style="width: 18rem;">
 	<div class="card-img-top">
   <% if board.image.attached? %>
-    <%= image_tag board.image, class: 'img-fluid' %>
+    <%= image_tag board.image.variant(resize: "512x512"), class: 'img-fluid' %>
   <% end %>
    <div class="card-img-overlay">
       <h6><span class="badge bg-secondary"><%= board.category %></span></h6>
