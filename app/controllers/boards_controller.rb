@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
     @boards = Board.all.includes(:user).order(created_at: :desc)
     @q = Board.ransack(params[:q])
    #@boards = @q.result.includes(:user).distinct
-    @boards = @q.result
+    @boards = @q.result(distinct: true).page(params[:page])
     @board = Board.new
   end
 

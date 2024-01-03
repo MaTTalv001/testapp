@@ -1,0 +1,6 @@
+<%= link_to board_minors_path(board), 
+                  data: { turbo_method: :delete },
+                  class: "btn btn-secondary btn-sm",
+                  id: "unminor-button-for-board-#{board.id}" do %>
+<%= "#{board.minors_count}シブR" %>
+<% end %>

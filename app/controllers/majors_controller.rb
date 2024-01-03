@@ -2,12 +2,20 @@ class MajorsController < ApplicationController
   before_action :find_board
   def create
     @board.majors.where(user: current_user).first_or_create
-    redirect_to boards_path
+    # redirect_to boards_path
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to boards_path }
+    end
   end
 
   def destroy
     @board.majors.where(user: current_user).destroy_all
-    redirect_to boards_path
+    #redirect_to boards_path
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to boards_path }
+    end
   end
 
   private

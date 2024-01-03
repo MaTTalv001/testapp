@@ -12,12 +12,12 @@
           <%= f.password_field :password, class: 'form-control' %>
         </div>
         <div class="actions">
-          <%= f.submit 'ログイン', class: 'btn btn-secondary btn-lg mt-5' %>
+          <%= f.submit 'ログイン', class: 'btn btn-primary btn-lg mt-5' %>
         </div>
       <% end %>
       <div class='text-center mt-3'>
-        <%= link_to 'RR 新規ユーザー登録', new_user_path %>
-        <%= link_to 'パスワードの再発行', '#' %>
+        <%= link_to 'RR 新規ユーザー登録', new_user_path, class:"btn btn-outline-primary" %>
+        <%= link_to 'パスワードの再発行', '#', class:"btn btn-outline-primary" %>
       </div>
     </div>
   </div>
