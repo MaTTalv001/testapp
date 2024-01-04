@@ -25,7 +25,7 @@
             </div>
           <% else %>
             <div class="alert alert-primary mt-3" role="alert">
-              各機能の利用にはログインが必要です
+              ログインすると投稿と評価が可能になります
             </div>
           <%end%>
     
@@ -37,6 +37,10 @@
       </div>
     </div>
   </div>
+</div>
+<div class="mb-3">
+  <%= paginate @boards %>
+  <p> </p>
 </div>
 <div class="mb-5">
  
@@ -56,3 +60,6 @@
     </div>
   </div>
 </div>
+
+
+"https://twitter.com/share?url=https://rr-8cbq.onrender.com/boards&text=あるあるを投稿しました。#{@board.body}", target: '_blank'
