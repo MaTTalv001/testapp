@@ -40,9 +40,7 @@ class BoardsController < ApplicationController
     # rescue Net::ReadTimeout
     # end
     if @board.save
-      flash[:success] = I18n.t('board.post_aruaru', item: Board.model_name.human)
-      flash[:twitter_prompt] = view_context.link_to 'Twitterに投稿しますか？', "https://twitter.com/share?url=https://rr-8cbq.onrender.com/boards&text=あるあるを投稿しました。#{@board.body}", target: '_blank'
-      redirect_to boards_path
+      redirect_to boards_path, success: I18n.t('board.post_aruaru', item: Board.model_name.human)
     else
       Rails.logger.debug(@board.errors.full_messages)
       flash.now['danger'] = I18n.t('board.failed_post_aruaru', item: Board.model_name.human)
