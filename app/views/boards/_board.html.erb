@@ -42,7 +42,7 @@
       <%= board.created_at.strftime("%Y-%m-%d %H:%M") %>
     </small>
     <% if logged_in? %>
-    <button type="button" class="btn btn-primary bi bi-twitter" data-bs-toggle="modal" data-bs-target="#X"></button>
+    
       <%= render 'crud_menus', board: board if current_user.own?(board) %>
     <% end %>
   </div>
