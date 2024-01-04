@@ -9,6 +9,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" rel="stylesheet">
     <%= javascript_importmap_tags %>
+
+
+    <% if Rails.env.production? %>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@RckLVnPtRv61824" />
+      <meta property="og:url" content="https://rr-8cbq.onrender.com/" />
+      <meta property="og:title" content="Reality Reflections ~あるあるを寄せ合うSNS~" />
+      <meta property="og:description" content="わかりみの深い「あるある」を皆で共有するアプリ。投稿内容はAIでイラスト化します。" />
+      <meta property="og:image" content="<%= image_url "RR_top.png" %>" />
+    <% end %>
+
   </head>
 
   <body>
