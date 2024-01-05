@@ -35,10 +35,7 @@ class BoardsController < ApplicationController
       flash.now['danger'] = I18n.t('ja.board.failed_post_aruaru', item: Board.model_name.human)
       render :new, status: :unprocessable_entity
     end
-    # begin
-      # @board.body = ChatgptService.call("次の入力文を関西弁にしてください 入力文：#{@board.body}")
-    # rescue Net::ReadTimeout
-    # end
+    
     if @board.save
       redirect_to boards_path, success: I18n.t('board.post_aruaru', item: Board.model_name.human)
     else
