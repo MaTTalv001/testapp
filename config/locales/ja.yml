@@ -19,3 +19,9 @@ ja:
     failed_post_aruaru: "あるあるを投稿できませんでした"
     create_button: "投稿する"
     delete: "Remove"
+  ja:
+  views:
+    pagination:
+      previous: "« 前ページ"
+      next: "次ページ »"
+      truncate: "..."
