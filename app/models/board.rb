@@ -1,8 +1,8 @@
 class Board < ApplicationRecord
   has_one_attached :image
   belongs_to :user
-  has_many :majors
-  has_many :minors
+  has_many :majors, dependent: :destroy
+  has_many :minors, dependent: :destroy
   validates :body, length: { maximum: 140 }, presence: true
   validates :category, presence: true
 
