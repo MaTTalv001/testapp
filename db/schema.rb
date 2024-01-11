@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_10_133721) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_140422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_10_133721) do
     t.string "category"
     t.integer "majors_count", default: 0
     t.integer "minors_count", default: 0
+    t.integer "guest_majors_count", default: 0
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
