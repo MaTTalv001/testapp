@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row m-1">
     <div class="col-12">
       <div class="row">
         <%= search_form_for @q do |f| %>
@@ -38,13 +38,15 @@
     </div>
   </div>
 </div>
-<div class="mb-3">
+<div class="mb-5">
   <%= paginate @boards %>
   <p> </p>
 </div>
-<div class="mb-5">
- 
-</div>
+
+
+
+
+
 <!-- モーダル -->
 <div class="modal fade" id="newBoardModal" tabindex="-1" aria-labelledby="newBoardModalLabel" aria-hidden="true">
   <div class="modal-dialog">

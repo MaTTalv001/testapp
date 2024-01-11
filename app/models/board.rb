@@ -3,6 +3,7 @@ class Board < ApplicationRecord
   belongs_to :user
   has_many :majors, dependent: :destroy
   has_many :minors, dependent: :destroy
+  has_many :guest_majors, dependent: :destroy
   validates :body, length: { maximum: 140 }, presence: true
   validates :category, presence: true
 
@@ -17,6 +18,9 @@ class Board < ApplicationRecord
   end
   def self.ransackable_associations(auth_object = nil)
     %w[user majors minors] # 検索可能な関連付けをここにリストアップ
+  end
+  def guest_majors_count
+    guest_majors.count
   end
 
   #ransacker :majors_count do
