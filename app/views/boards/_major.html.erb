@@ -2,5 +2,5 @@
                   data: { turbo_method: :post},
                   class: "btn btn-outline-primary btn-sm",
                   id: "major-button-for-board-#{board.id}" do %>
-<%= "#{board.majors_count}めちゃR" %>
+<%= "#{board.majors_count+board.guest_majors_count}めちゃR" %>
 <% end %>

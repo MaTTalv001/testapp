@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center align-items-center vh-80 m-5">
+   <div class="container mx-auto bg-light">
+    <div class="mt-3">
+    <h2><b>どっちがmoreあるある？</b><h2>
+    </div>
+    
+    <div class="mb-5">  
+      <div id="boards-container" class="row">
+
+        <%= javascript_include_tag 'boards' %>
+
+      </div>
+    </div>
+    <%= link_to boards_path do %>
+    <button type="button" class="btn btn-primary btn-lg">一覧をみる</button>
+    <% end %>
+    <%= link_to new_board_path do %>
+    <button type="button" class="btn btn-primary btn-lg">投稿する</button>
+    <% end %>
+
+  </div>
+  
+</div>

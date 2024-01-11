@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_02_124818) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_140422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,7 +50,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_124818) do
     t.string "category"
     t.integer "majors_count", default: 0
     t.integer "minors_count", default: 0
+    t.integer "guest_majors_count", default: 0
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "guest_majors", force: :cascade do |t|
+    t.bigint "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_guest_majors_on_board_id"
   end
 
   create_table "majors", force: :cascade do |t|
@@ -88,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_124818) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boards", "users"
+  add_foreign_key "guest_majors", "boards"
   add_foreign_key "majors", "boards"
   add_foreign_key "majors", "users"
   add_foreign_key "minors", "boards"

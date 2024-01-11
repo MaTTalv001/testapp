@@ -36,8 +36,14 @@ class BoardsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
     
-    if @board.save
-      redirect_to boards_path, success: I18n.t('board.post_aruaru', item: Board.model_name.human)
+    if @board.image.attached? && @board.image.filename.to_s != ""
+      if @board.save
+        redirect_to boards_path, success: I18n.t('board.post_aruaru', item: Board.model_name.human)
+      else
+        Rails.logger.debug(@board.errors.full_messages)
+        flash.now['danger'] = I18n.t('board.failed_post_aruaru', item: Board.model_name.human)
+        render :new, status: :unprocessable_entity
+      end      
     else
       Rails.logger.debug(@board.errors.full_messages)
       flash.now['danger'] = I18n.t('board.failed_post_aruaru', item: Board.model_name.human)
@@ -51,6 +57,23 @@ class BoardsController < ApplicationController
     @board.destroy!
     redirect_to boards_path, success: t('board.delete_aruaru', item: Board.model_name.human)
   end
+
+  # 新規追加 ランダムなboardを2つ選ぶ
+  def random_boards
+    boards = Board.order("RANDOM()").limit(2)
+    boards_with_image_urls = boards.map do |board|
+      image_url = board.image.attached? ? url_for(board.image.variant(resize: "512x512")) : nil
+      board.attributes.merge({ image_url: image_url })
+    end
+
+    render json: boards_with_image_urls
+  end
+
+  # 新規追加　あるある選択ページ
+  def which_major
+    @boards = Board.all
+  end
+
 
   private
   
