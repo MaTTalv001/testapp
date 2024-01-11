@@ -1,4 +1,5 @@
 class GuestMajorsController < ApplicationController
+  skip_before_action :require_login, only: %i[create ]
   def create
     @guest_major = GuestMajor.new(guest_major_params)
     if @guest_major.save
