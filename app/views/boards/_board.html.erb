@@ -31,7 +31,7 @@
       <%= render 'boards/minor', {board: board} %>
     <% end %>
   <% else %>
-    <button type="button" class="btn btn-outline-primary" disabled><%= "#{board.majors_count}めちゃR" %></button>
+    <button type="button" class="btn btn-outline-primary" disabled><%= "#{board.majors_count+board.guest_majors_count}めちゃR" %></button>
     <button type="button" class="btn btn-outline-secondary" disabled><%= "#{board.minors_count}シブR" %></button>
   <% end %>
   <i class="bi bi-question-circle" data-bs-toggle="modal" data-bs-target="#RSample"></i>
