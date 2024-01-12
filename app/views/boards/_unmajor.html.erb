@@ -2,5 +2,5 @@
                   data: { turbo_method: :delete},
                   class: "btn btn-primary btn-sm",
                   id: "unmajor-button-for-board-#{board.id}" do %>
-<%= "#{board.majors_count}めちゃR" %>
+<%= "#{board.majors_count+board.guest_majors_count}めちゃR" %>
 <% end %>
