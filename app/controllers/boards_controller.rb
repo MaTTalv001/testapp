@@ -3,15 +3,9 @@ class BoardsController < ApplicationController
   skip_before_action :require_login, only: %i[index which_major random_boards]
   
   def index
-    # @boards = Board.all.includes(:user).order(created_at: :desc)
-    @q = Board.ransack(params[:q])
-    if params[:q].blank?
-      @boards = Board.all.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
-    else
-   #@boards = @q.result.includes(:user).distinct
-    @boards = @q.result(distinct: true).page(params[:page]).per(10)
-    end
-    @board = Board.new
+      @q = Board.ransack(params[:q])
+      @boards = @q.result.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+      @board = Board.new
   end
 
   def show
