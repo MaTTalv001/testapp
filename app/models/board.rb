@@ -32,10 +32,8 @@ class Board < ApplicationRecord
     #Arel.sql(query)
   #end
   #
-  # Ransackのカスタムソートメソッド
   ransacker :total_majors do
-    Arel.sql('(majors_count + guest_majors_count)')
+    Arel.sql('majors_count + guest_majors_count')
   end
-
 
 end
